@@ -2,6 +2,7 @@ package com.example.walletsystem.demo.controllers;
 
 import com.example.walletsystem.demo.dto.UserDto;
 import com.example.walletsystem.demo.model.UserAccount;
+import com.example.walletsystem.demo.model.Wallet;
 import com.example.walletsystem.demo.repository.UserLoginRepository;
 import com.example.walletsystem.demo.repository.UserLoginRepositoryImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.logging.Logger;
 
 @Controller
@@ -45,7 +48,12 @@ Logger logger=Logger.getLogger("UserLoginController.class");
         );
         userAccount.setLastName(user.getLastname());
         userAccount.setEmail(user.getEmail());
+        List<Wallet> walletList=new ArrayList<>();
+        /*
+        Default two wallets are added on registration
+         */
         userLoginRepository.save(userAccount);
+
       return "redirect:register?success";
     }
     @PostMapping("/authenticate")

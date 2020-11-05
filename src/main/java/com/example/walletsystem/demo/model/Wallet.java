@@ -5,6 +5,16 @@ import javax.persistence.*;
 @Entity
 public class Wallet {
 
+
+    public Wallet()
+    {
+
+    }
+
+    public  Wallet(String walletName)
+    {
+        this.walletName=walletName;
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long walletId;
@@ -14,15 +24,40 @@ public class Wallet {
 
     private Long amount;
 
-    public Character getWalletSymbol() {
-        return walletSymbol;
+
+    public long getWalletId() {
+        return walletId;
     }
 
-    public void setWalletSymbol(Character walletSymbol) {
-        this.walletSymbol = walletSymbol;
+    public void setWalletId(long walletId) {
+        this.walletId = walletId;
     }
 
-    private Character walletSymbol;
+    public UserAccount getUserAccount() {
+        return userAccount;
+    }
+
+    public void setUserAccount(UserAccount userAccount) {
+        this.userAccount = userAccount;
+    }
+
+    public Long getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Long amount) {
+        this.amount = amount;
+    }
+
+    public String getWalletName() {
+        return walletName;
+    }
+
+    public void setWalletName(String walletName) {
+        this.walletName = walletName;
+    }
+
+    private String walletName;
 
 
 
